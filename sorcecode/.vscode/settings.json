@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "thread.h": "c",
+        "variaveis.h": "c",
+        "head.h": "c",
+        "asmfunctions.h": "c",
+        "gfx.h": "c",
+        "memory.h": "c"
+    }
+}

@@ -1,0 +1,10 @@
+
+bin/
+iso/
+bin/*
+iso/*
+public/global_main.c
+
+/compiler/exec
+/compiler/exec.exe
+/sourcecode/SO.iso

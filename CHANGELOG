@@ -1,0 +1,130 @@
+# Changelog
+Todas as notas de modificações vão ser constatadas neste arquivo.
+
+## [0.3.02] - 11/09/2019 Autor: Crazynds
+### Added
+ * Adicionado arquivo de make global, onde o usuario pode vincular seus programas dinamicamente ao SO para a execução dos mesmos;
+ * Manipulação de cursor disponibilizada;
+### Change
+ * Make agora se encontra no diretório raiz;
+### Removed
+### Fixed
+ * Resolvidor problema que mesmo o programa não estar fazendo nada, consumia toda a CPU do computador ao máximo;
+### Bugs
+
+## [0.3.01] - 25/07/2019 Autor: Crazynds
+### Added
+ * Arquivo GDT.c, onde será gerado uma nova GDT dinamicamente no C.
+ * Agora ao executar o arquivo make, ja é gerado um arquivo .ISO bootavel do SO.
+ * Agora existe um metodo de detecção de memória adequado usando a interrupção 0x15 da bios, e todos os dados são salvos a partir da memoria 0x5000. Esse procedimento é feito no bootloader.
+### Changed
+ * Agora o bootloader além de carregar o kernel, já define um IDT vazia, uma GDT básica, e entra em modo 64 bits, e logo após, iniciar o kernel na possição normal, tudo isso em 512 bytes.
+### Removed
+ * Pelo seu tamanho limitado, agora o boot loader não printará mais nada na tela para economizar espaço entre os 512 bytes.
+### Fixed
+ * Bug que ao utilizar registradores da x86 FPU, MMX, XMM os mesmos não eram salvos corretamente. Agora foi corrigido para que na troca de tarefas seja salvo.
+ * Corrigido bug que o boot loader travava em máquinas virtuais ou computadores físicos quando era passado para ISO.
+### Bugs
+ * Sleep timer está em uma forma pouco eficiente, e não presciso o suficiente para aplicações mais avançadas.
+ * Existe um bug que ao ler a memória de forma corrida, em alguns virtualizadores ou máquinas pode gerar um erro que reinicia a máquina.
+ * Ao adicionar novos códigos no bootloader, pode vir a não executar corretamente pois a IDT e GDT desalinham, levando a reiniciar a máquina.
+ * A detecção de memória feita pela chamada da interupção da bios 0x15 não está retornando corretamente os valores esperados.
+
+## [0.3.00] - 18/07/2019 Autor: Crazynds
+### Added
+ * Gerenciador de memória do Kernel dinâmico.
+ * Sleep timer. Agora quando a thread entra em modo sleep, passa seu tempo de processamento para o outro. Ainda é muito primitivo e não muito preciso.
+### Changed
+ * Mudado a forma de gerencia de memória, sendo 1 MB pra cima foi totalmente reestabelecido.
+ * Corrigido e organizado arquivos do código fonte.
+### Removed
+ * Gráficos pixel a pixel. Será adicionado futuramente.
+### Fixed
+ * Multi-Threads, Agora é possivel utilizar multi-threads sem problema de ficar crashando.
+ * Corrigido sistema de teclado. Agora não existe mais uma chance de produzir uma Exceção randomica.
+ * Corrigido problema que quando se aumentava muito o timer da IDT principal, as threads travavam.
+### Bugs
+
+## [0.2.01] - 15/01/2019 Autor: Crazynds
+### Added
+### Changed
+ * Ao efetuar a troca entre processos, todos os registradores são salvos para evitar futuras perdas de integridade do processo.
+ * Escolha do estilo do gráfico agora é feita antes da hora de compilar
+### Removed
+### Fixed
+ * Resolvido problema de quando a frequencia está muito alta, o multi-tarefa poderia dar uma exceção.
+### Bugs
+ * Por algum motivo, enquanto alguma thread está printado algo na tela, e a interrupção de teclado a interrompe, pode gera um Exceção randomica.
+ * Ao iniciar o sistema multi-tarefa, logo no inicio das trocas, pode gerar uma exceção de page fault, supervisor acessando memoria de acesso protegido.
+
+## [0.2.0] - 14/01/2019 Autor: Crazynds
+### Added
+ * Paginação simples em C statica.
+ * Multi-Tarefa (Threads).
+ * Iniciado a tansição de uma implementação de 32 bits, para o SO de 64 bits.
+### Changed
+ * Graficos em modo texto agora estão em um arquivo separado.
+### Removed
+### Fixed
+ * Paginação
+### Bugs
+ * Ao utilizar o recurso de multi-tarefa, quando se coloca uma alta frequencia da IRQ 0, ocabam por ocorrer erros.
+ * Por algum motivo, enquanto alguma thread está em loop com uma variavel ++, a interrupção de teclado, depois q chamada, gera um Exceção.
+
+
+## [0.1.2] - 03/01/2019 Autor: Crazynds
+### Added
+ * IRQ timer funcionar
+ * Leitura de teclado funcionando
+ * Arquivo link para fazer o ligamento do codigo com a memoria
+### Changed
+ * Arquitetura antiga da idt
+### Removed
+### Fixed
+ * Structs voltaram a funcionar
+ * IDT funcionando corretamente agora
+### Bugs
+ * Alta taxa de dar algo errado
+
+
+## [0.1.1] - 02/10/2018 Autor: Crazynds
+### Added
+ * Verificação de CPUID
+ * Paginação do kernel
+ * Configuração inicial da GDT
+ * Configuração inicial da IDT
+### Changed
+ * Atualizado o layout do código fonte
+ * Wiki atualizada
+ * Kernel agora incia em 64 Bits e compila em C 64 Bits
+### Removed
+ * Acesso ao 32 Bits
+### Fixed
+ * O boot loader carregava apenas se o limite de segmentos estava correto, agora ele carrega corretamente mesmo com o número mais q o especificado
+### Bugs
+ * Alta taxa de dar algo errado
+ * Structs não estão funcionando
+
+
+## [0.1.0] - 29/09/2018 Autor: Crazynds
+### Added
+ * Implementado sistema de Boot Loader
+### Changed
+ * Kernel basico
+### Removed
+ * Todas as funcionalidades do sistema 0.0.9V para serem re-implementadas futuramente
+### Fixed
+### Bugs
+
+
+## [0.0.9] - 03/09/2018 Autor: Crazynds
+### Added
+ * Sistema virtual de arquivos
+### Changed
+ * Brain coder abre aquivos
+### Removed
+
+### Fixed
+ * txtedit foi consertado
+### Bugs
+ * txtedit Trava ao tentar salvar

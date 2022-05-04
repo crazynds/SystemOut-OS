@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "alloc.h": "c",
+        "variaveis.h": "c",
+        "paging.h": "c",
+        "gfx.h": "c",
+        "stdio.h": "c",
+        "memory.h": "c",
+        "thread.h": "c",
+        "system.h": "c",
+        "string.h": "c",
+        "head.h": "c",
+        "asmfunctions.h": "c",
+        "iopipe.h": "c"
+    }
+}
