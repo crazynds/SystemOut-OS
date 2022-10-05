@@ -8,6 +8,10 @@
 %include "sorcecode/asm_kernel/funcs/load_thread.asm"
 %include "sorcecode/asm_kernel/funcs/ata.asm"
 
+[global __stack_chk_fail]
+__stack_chk_fail:
+    hlt
+    jmp __stack_chk_fail
 
 [extern kmain]
 [extern kloop]

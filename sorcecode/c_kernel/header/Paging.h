@@ -19,6 +19,4 @@
 
     void pagingInit();
 
-    char *FAULT[8];
-
 #endif

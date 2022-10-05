@@ -10,6 +10,8 @@
 #define KERNEL_PAGE(P4,P3,P2,P1) ((uint64*)(KERNEL_PAGE_L1(P4,P3,P2)[P1]&0xFFFFFFFFFFFFFE00))
 
 
+char *FAULT[8];
+
 uint64 NEXT_PAGING_KERNEL=REAL_PAG_MEM;
 
 uint64* getAddrMem(uint64 v){

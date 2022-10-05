@@ -1,13 +1,13 @@
 all: bin/os-image SO.iso
 	make clean
 
-test:
+test:bin/os-image
 	qemu-system-x86_64 bin/os-image -m 128
 
 bin/os-image: bin/boot_sect.bin bin/kernel.bin
 	cat bin/boot_sect.bin bin/kernel.bin > bin/os-image
 
-iso: bin/os-image
+SO.iso: bin/os-image
 	mkdir -p iso
 	cp -v bin/os-image iso/
 	mkisofs -no-emul-boot -b os-image -o ExoKernel.iso iso/
